@@ -1,0 +1,93 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: Tahoma, Verdana, STHeiTi, simsun, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #6DADC3;
+	background-image: url(../img/admin/login_bg.jpg);
+}
+
+#loginDiv {
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	width: 800px;
+	margin: 0 0 0 -301px;
+}
+
+.inputWrap {
+	width: 200px;
+	height: 46px;
+	float: left;
+	margin-right: 8px;
+}
+
+.inputWrap:focus {
+	background-color: yellow;
+}
+.inputText {
+	background-image: url(../img/admin/login_input.png);
+	background-position: -9px 0;
+	width: 180px;
+	height: 25px;
+	padding: 10px;
+	font-size: 22px;
+	outline: none;
+}
+
+.inputText:focus {
+	background-position: -9px -147px;
+}
+
+input {
+	border: none;
+	background-color: transparent;
+}
+
+#submit {
+	width: 130px;
+	height: 46px;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+	background-image: url(../img/admin/login_submit.png);
+	text-indent: -9000px;
+	background-position: -130px 0;
+}
+
+#submit:hover {
+	background-position: -130px -136.5px;
+}
+
+#msgDiv {
+	color: red; 
+	font-size: 8px;
+	margin: 5px;
+}
+
+h1 {
+	color: #E8E8E8;
+	font-size: 50px;
+	margin-bottom: 20px;
+}
+
+label {
+	position: absolute;
+	width: 200px;
+	height: 46px;
+	padding: 12px 10px;
+	color: #657F99;
+	cursor: default;
+}
+
+#foot {
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+	font-size: 8px;
+	color: white
+}

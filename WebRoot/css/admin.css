@@ -1,0 +1,249 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,body {
+	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body table {
+	height:100%;
+	width:100%;
+	border-collapse: collapse;
+}
+
+.top {
+	background-image: url(../img/admin/top_bg_repeat.png);
+	width: 100%;
+	height: 61px;
+}
+
+.wrap {
+	background-image: url(../img/admin/top_bg.png);
+	background-repeat: no-repeat;
+	height: 61px;
+}
+
+.wrap h1 {
+	margin: 0;
+	padding: 0 10px;
+	height: 38px;
+	color: #507C90;
+	font-size: 26px;
+	font-weight: bold;
+}
+
+.menu {
+	display: block;
+	width: 100%;
+	height: 24px;
+	background-image: url(../img/admin/main_menu_bg.gif);
+}
+
+.menu a {
+	float: left;
+	height: 24px;
+	margin: 0 0 0 20px;
+	text-decoration: none;
+	color: white;
+}
+
+.menu a span {
+	margin-left: 2px;
+	float: left;
+	padding: 0 10px;
+	height: 23px;
+	line-height: 20px;
+}
+
+.menu a.selected {
+	background-image: url(../img/admin/main_menu_bg_on.gif);
+	background-repeat: no-repeat;
+	color: #4592AE;
+}
+
+.menu a.selected span {
+	background-image: url(../img/admin/main_menu_bg_on.gif);
+	background-repeat: no-repeat;
+	background-position: 100%;
+}
+
+#adminDiv {
+	position: absolute;
+	right: 10px;
+	top: 0;
+	background-image: url(../img/admin/bar_bg.png);
+	background-position: 0 -144px;
+	background-color: #F1F9FB;
+	height: 23px;
+}
+
+#adminDiv span {
+	float: left;
+	margin: 5px 0 0 3px;
+}
+
+#adminDiv a {
+	float: left;
+	color: #1478A6;
+	margin: 0 6px;
+	padding-top: 1px;
+}
+
+#adminDiv .line {
+	float: left;
+	height: 22px;
+	border-left: 1px solid #BDDDE7;
+	border-right: 1px solid white;
+}
+
+#adminDiv #logoutA {
+	background-image: url(../img/admin/bar_bg.png);
+	background-position: 100% -144px;
+	height: 23px;
+	margin-right: 0;
+	padding: 1px 5px 0 0;
+}
+
+#mainTd {
+	height: 100%;
+}
+
+#sideMenuTd {
+	width: 186px;
+	height: 100%;
+	padding: 0;
+	vertical-align: top;
+	border-right: 1px solid #98C5DA;
+	background-color: #E6F0F2;
+}
+#sideMenuTd .bar {
+	background-image: url(../img/admin/bar_bg.png);
+	display: block;
+	padding: 0;
+	margin: 0;
+	background-position: 0 -43px;
+	height: 14px;
+	width: 187px;
+	background-color: #DCECF2;
+}
+#sideMenuTd .bar img {
+	background-position: -4px -58px;
+	position: absolute;
+	left: 0px;
+	width: 7px;
+	height: 5px;
+	margin: 4px 0 0 4px;
+	background-image: url(../img/admin/bg.png);
+}
+
+#sideMenuDiv {
+	padding-top: 2px;
+}
+.menu_item {
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+.menu_item_selected {
+	background-image: url(../img/admin/menu_bg_on.gif);
+	background-position: 0 50%;
+	border-top: 1px solid #9BCADF;
+	border-bottom: 1px solid #9BCADF;
+}
+.menu_item_selected span {
+	background-image: url(../img/admin/menu_bg_on.gif);
+	background-position: 0 50%;
+	padding: 0 2px;
+}
+.menu_item_text {
+	text-decoration: none;
+	background-image: url(../img/admin/menu_bg_line.gif);
+	background-position: 0 2px;
+	display: block;
+	border: 1px solid transparent;
+}
+.menu_item_text span{
+	background-color: #E6F0F2;
+	padding: 0 2px;
+}
+
+.arrow_empty {
+	background-image: url(../img/admin/menu_arrow.gif);
+	background-position: 0 -80px;
+	display: block;
+	width: 16px;
+	height: 16px;
+	float: left;
+}
+
+#contentTd {
+	vertical-align: top;
+}
+#locationTd {
+	height: 22px;
+	background-image: url(../img/admin/location_bg.png);
+	background-color: #E6F0F2;
+}
+
+#locationDiv {
+	margin: 5px 0 3px 8px;
+	
+}
+#locationDiv .dot {
+	background-image: url(../img/admin/dot_arrow.gif);
+	padding-left: 15px;
+}
+#locationLine {
+	border-top: 1px solid #4696B1;
+	border-bottom: 1px solid #4696B1;
+	height: 1px;
+	background-color: #7DB5C8;
+}
+
+#footerTd {
+	height: 22px;
+	background-image: url(../img/admin/bg.png);
+	background-position: 0 -67px;
+}
+#footerTd td {
+	border-left: 1px solid #DFF0F3;
+	border-right: 1px solid #87C5D5;
+	padding: 0 5px;
+}
+#footerTd td img {
+	vertical-align: middle;
+}
+
+.content_table {
+	border: 1px solid #9ACAE0;
+	width: 96%;
+	font-size: 12px;
+	margin: 20px auto;
+}
+.content_table tr td{
+	border-width: 0 0 0 1px;
+	border-bottom: 1px solid #9ACAE0;
+	border-top: 1px solid #9ACAE0;
+	border-left: 1px solid #9ACAE0;
+	padding: 3px 2px 2px 5px;
+}
+.content_table .header_tr {
+	background-color: #DBEBF0;
+	font-weight: normal;
+	color: #122347;
+	text-align: left;
+	height: 22px;
+}
+.content_table .even_tr {
+	background-color: #E9F5F9;
+}
+.content_table .odd_tr {
+	background-color: white;	
+}
+.content_table a {
+	color: black;
+}

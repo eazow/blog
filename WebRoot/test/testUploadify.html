@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<link href="/blog/uploadify/uploadify.css" type="text/css" rel="stylesheet" />
+		<script type="text/javascript" src="/blog/uploadify/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="/blog/uploadify/swfobject.js"></script>
+		<script type="text/javascript" src="/blog/uploadify/jquery.uploadify.v2.1.4.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#file_upload').uploadify({
+				'uploader'  : '/blog/uploadify/uploadify.swf',
+				'script'    : '/blog/admin/uploadImageAdminServlet',
+				'cancelImg' : '/blog/uploadify/cancel.png',
+				'folder'    : '/blog/test',
+				'multi'     : true
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<input id="file_upload" name="file_upload" type="file" />
+		
+		  <a href="javascript:jQuery('#file_upload').uploadifyUpload()">开始上传</a>&nbsp;
+	</body>
+</html>
