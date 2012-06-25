@@ -4,10 +4,10 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-  	<welcome-file-list>
-    	<welcome-file>getIndexArticlesServlet</welcome-file>
-  	</welcome-file-list>
-  	
+	<welcome-file-list>
+		<welcome-file>index</welcome-file>
+	</welcome-file-list>
+
 	<servlet>
 		<servlet-name>GetIndexArticlesServlet</servlet-name>
 		<servlet-class>com.eazow.blog.servlet.GetIndexArticlesServlet</servlet-class>
@@ -286,11 +286,11 @@
 
 	<servlet-mapping>
 		<servlet-name>GetIndexArticlesServlet</servlet-name>
-		<url-pattern>/getIndexArticlesServlet</url-pattern>
+		<url-pattern>/index</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>GetArticleServlet</servlet-name>
-		<url-pattern>/getArticleServlet</url-pattern>
+		<url-pattern>/article</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 	  <servlet-name>AddCommentServlet</servlet-name>
@@ -308,6 +308,16 @@
 	  <servlet-name>GetAboutAdminServlet</servlet-name>
 	  <url-pattern>/admin/getAboutAdminServlet</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>GetProfileServlet</servlet-name>
+	  <url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>GetAllAlbumsServlet</servlet-name>
+	  <url-pattern>/albums</url-pattern>
+	</servlet-mapping>
+	
+	
 
 	<!-- Admin Servlet Mapping Start -->
 	<servlet-mapping>
@@ -375,10 +385,6 @@
 	  <url-pattern>/getLatestImagesServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-	  <servlet-name>GetAllAlbumsServlet</servlet-name>
-	  <url-pattern>/getAllAlbumsServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
 	  <servlet-name>GetImagesOfAlbumServlet</servlet-name>
 	  <url-pattern>/getImagesOfAlbumServlet</url-pattern>
 	</servlet-mapping>
@@ -393,10 +399,6 @@
 	<servlet-mapping>
 	  <servlet-name>BrowsePreviousImageOfAlbumServlet</servlet-name>
 	  <url-pattern>/browsePreviousImageOfAlbumServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-	  <servlet-name>GetProfileServlet</servlet-name>
-	  <url-pattern>/getProfileServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 	  <servlet-name>GetArticlesByArticleArchiveServlet</servlet-name>

@@ -31,9 +31,9 @@
 					</h1>
 				</div>
 				<ul class="navigation">
-					<li><a href="getIndexArticlesServlet" <%if("index".equals(location)){%>class="active"<%}%> hidefocus>Home</a></li>
-					<li><a href="getAllAlbumsServlet" <%if("album".equals(location)){%>class="active"<%}%> hidefocus>Album</a></li>
-					<li><a href="getProfileServlet" <%if("profile".equals(location)){%>class="active"<%}%> hidefocus>Profile</a></li>
+					<li><a href="index" <%if("index".equals(location)){%>class="active"<%}%> hidefocus>Home</a></li>
+					<li><a href="albums" <%if("album".equals(location)){%>class="active"<%}%> hidefocus>Album</a></li>
+					<li><a href="profile" <%if("profile".equals(location)){%>class="active"<%}%> hidefocus>Profile</a></li>
 	 			</ul>
 			</div>
 		</div>

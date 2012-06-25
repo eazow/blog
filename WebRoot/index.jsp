@@ -24,7 +24,7 @@
 				{
 			%>
 					<h1>
-						<a href="getArticleServlet?id=<%=article.getId()%>">
+						<a href="article?id=<%=article.getId()%>">
 							<%= article.getTitle() %>
 						</a>
 					</h1>
@@ -40,7 +40,7 @@
 							</p>
 							<br/>
 							<div>
-								<a href="getArticleServlet?id=<%=article.getId()%>"
+								<a href="article?id=<%=article.getId()%>"
 									style="color: red; font-weight: bold"
 									onmouseover="addUnderline(this)" onmouseout="removeUnderline(this)">
 									查看全文>>
