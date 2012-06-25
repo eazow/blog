@@ -35,7 +35,6 @@
 					<li><a href="getAllAlbumsServlet" <%if("album".equals(location)){%>class="active"<%}%> hidefocus>Album</a></li>
 					<li><a href="getProfileServlet" <%if("profile".equals(location)){%>class="active"<%}%> hidefocus>Profile</a></li>
 	 			</ul>
-				
 			</div>
 		</div>
 		<div style="background-image: url('img/bg.png'); background-repeat: repeat-x; background-color: #D3E9F8">
