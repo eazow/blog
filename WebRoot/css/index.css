@@ -20,11 +20,11 @@ input {
 	font: normal 11px "Lucida Sans Unicode",sans-serif;
 }
 p,ul {
-	font-size: 13px;
+	font-size: 14px;
 	padding-bottom: 10px;
 }
 h1 {
-	font-size: 15px;
+	font-size: 18px;
 	margin-bottom: 4px;
 }
 
@@ -45,7 +45,7 @@ h1,h2,h3 {
 	width: 960px;
 	min-height: 450px;
 	margin: 0 auto;
-	background-color: #EBF5FB;
+/*	background-color: #EBF5FB; */
 }
 
 #profileContainer {
@@ -177,7 +177,8 @@ h1,h2,h3 {
 }
 .content a 
 {
-	color: #09F;
+/*	color: #09F; */
+	color: #333;
 	text-decoration: none;
 }
 .content a:hover

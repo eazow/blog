@@ -13,51 +13,47 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.ArticleArchive;
 import com.eazow.blog.service.ArticleArchiveService;
 
-
 @SuppressWarnings("serial")
-public class PreEditArticleArchiveAdminServlet extends HttpServlet
-{
+public class PreEditArticleArchiveAdminServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String articleArchiveIdStr = request.getParameter("articleArchiveId");
-		if(articleArchiveIdStr == null)
-		{
+		if (articleArchiveIdStr == null) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int articleArchiveId = 0;
-		try
-		{
+		try {
 			articleArchiveId = Integer.parseInt(articleArchiveIdStr);
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
-		
-		ArticleArchiveService articleArchiveService = DAOFactory.getArticleArchiveServiceInstance();
-		ArticleArchive articleArchive = articleArchiveService.manageArticleArchive(articleArchiveId);
+
+		ArticleArchiveService articleArchiveService = DAOFactory
+				.getArticleArchiveServiceInstance();
+		ArticleArchive articleArchive = articleArchiveService
+				.manageArticleArchive(articleArchiveId);
 		request.setAttribute("articleArchive", articleArchive);
-		
-		request.getRequestDispatcher("editArticleArchive.jsp").forward(request, response);
+
+		request.getRequestDispatcher("editArticleArchive.jsp").forward(request,
+				response);
 	}
 
 }

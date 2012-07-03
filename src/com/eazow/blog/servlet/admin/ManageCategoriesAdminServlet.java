@@ -14,34 +14,32 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Category;
 import com.eazow.blog.service.CategoryService;
 
-
 @SuppressWarnings("serial")
-public class ManageCategoriesAdminServlet extends HttpServlet
-{
+public class ManageCategoriesAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
-		CategoryService categoryService = DAOFactory.getCategoryServiceInstance();
+		CategoryService categoryService = DAOFactory
+				.getCategoryServiceInstance();
 		List<Category> categoriesList = categoryService.manageAllCategories();
 		request.setAttribute("categoriesList", categoriesList);
-		
-		request.getRequestDispatcher("categoriesManagement.jsp").forward(request, response);
+
+		request.getRequestDispatcher("categoriesManagement.jsp").forward(
+				request, response);
 		return;
 	}
 }

@@ -8,57 +8,48 @@ import com.eazow.blog.entity.Category;
 import com.eazow.blog.entity.Draft;
 import com.eazow.blog.service.DraftService;
 
-
-public class DraftServiceImpl implements DraftService
-{
+public class DraftServiceImpl implements DraftService {
 	private DraftDAO draftDAO;
 	private CategoryDAO categoryDAO;
-	
+
 	private static DraftService draftService = null;
-	
-	private DraftServiceImpl(DraftDAO draftDAO, CategoryDAO categoryDAO)
-	{
+
+	private DraftServiceImpl(DraftDAO draftDAO, CategoryDAO categoryDAO) {
 		this.draftDAO = draftDAO;
 		this.categoryDAO = categoryDAO;
 	}
-	
-	public static DraftService getDraftServiceInstance(DraftDAO draftDAO, CategoryDAO categoryDAO)
-	{
-		if(null == draftService)
+
+	public static DraftService getDraftServiceInstance(DraftDAO draftDAO,
+			CategoryDAO categoryDAO) {
+		if (null == draftService)
 			draftService = new DraftServiceImpl(draftDAO, categoryDAO);
 		return draftService;
 	}
-	
-	public boolean addDraft(Draft draft)
-	{
+
+	public boolean addDraft(Draft draft) {
 		return this.draftDAO.addDraft(draft);
 	}
-	
-	public List<Draft> getAllDrafts()
-	{
+
+	public List<Draft> getAllDrafts() {
 		List<Draft> draftsList = this.draftDAO.getAllDrafts();
 		Category category = null;
-		for(Draft draft: draftsList)
-		{
+		for (Draft draft : draftsList) {
 			int categoryId = draft.getCategoryId();
 			category = categoryDAO.getCategory(categoryId);
 			draft.setCategory(category);
 		}
 		return draftsList;
 	}
-	
-	public int getAllDraftsNum()
-	{
+
+	public int getAllDraftsNum() {
 		return this.draftDAO.getAllDraftsNum();
 	}
-	
-	public Draft getDraft(int id)
-	{
+
+	public Draft getDraft(int id) {
 		return this.draftDAO.getDraft(id);
 	}
-	
-	public boolean deleteDraft(int id)
-	{
+
+	public boolean deleteDraft(int id) {
 		return this.draftDAO.deleteDraft(id);
 	}
 

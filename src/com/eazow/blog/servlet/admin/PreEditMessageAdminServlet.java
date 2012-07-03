@@ -13,50 +13,43 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Message;
 import com.eazow.blog.service.MessageService;
 
-
 @SuppressWarnings("serial")
-public class PreEditMessageAdminServlet extends HttpServlet
-{
+public class PreEditMessageAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String messageIdStr = request.getParameter("messageId");
-		if(null==messageIdStr || "".equals(messageIdStr))
-		{
+		if (null == messageIdStr || "".equals(messageIdStr)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int messageId = 0;
-		try
-		{
+		try {
 			messageId = Integer.parseInt(messageIdStr);
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		MessageService messageService = DAOFactory.getMessageServiceInstance();
 		Message message = messageService.getMessage(messageId);
 		request.setAttribute("message", message);
-		
-		request.getRequestDispatcher("editMessage.jsp").forward(request, response);
+
+		request.getRequestDispatcher("editMessage.jsp").forward(request,
+				response);
 	}
 
 }

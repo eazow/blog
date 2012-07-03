@@ -16,38 +16,36 @@ import com.eazow.blog.service.ArticleService;
 import com.eazow.blog.service.CategoryService;
 import com.eazow.blog.service.DraftService;
 
-
 @SuppressWarnings("serial")
-public class ManageArticlesAdminServlet extends HttpServlet
-{
+public class ManageArticlesAdminServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		ArticleService articleService = DAOFactory.getArticleServiceInstance();
 		List<Article> articlesList = articleService.getAllArticles();
-		CategoryService categoryService = DAOFactory.getCategoryServiceInstance();
+		CategoryService categoryService = DAOFactory
+				.getCategoryServiceInstance();
 		List<Category> categoriesList = categoryService.getAllCategories();
 		request.setAttribute("articlesList", articlesList);
 		request.setAttribute("categoriesList", categoriesList);
-		
+
 		DraftService draftService = DAOFactory.getDraftServiceInstance();
 		int draftsNum = draftService.getAllDraftsNum();
 		request.setAttribute("draftsNum", draftsNum);
-		request.getRequestDispatcher("articlesManagement.jsp").forward(request,	response);
+		request.getRequestDispatcher("articlesManagement.jsp").forward(request,
+				response);
 	}
 
 }

@@ -38,6 +38,9 @@
 			</div>
 		</div>
 		<div style="background-image: url('img/bg.png'); background-repeat: repeat-x; background-color: #D3E9F8">
-			<div style="background-image: url('img/clouds.png'); background-repeat: no-repeat; padding-top: 20px; background-position: -35px 0px">
-				<div id="mainWrapper">
+			<div style="/*background-image: url('img/clouds.png'); */background-repeat: no-repeat; padding-top: 20px; background-position: -28px 300px">
+			
+			<!--	<div id="mainWrapper">-->
+				<!--
 				<div id="contentCHead"></div>
+				-->

@@ -13,53 +13,46 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Image;
 import com.eazow.blog.service.ImageService;
 
-
 @SuppressWarnings("serial")
-public class ManagePreviousImageOfAlbumAdminServlet extends HttpServlet
-{
+public class ManagePreviousImageOfAlbumAdminServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
-		
+
 		String imageIdStr = request.getParameter("imageId");
-		if(null == imageIdStr)
-		{
+		if (null == imageIdStr) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int imageId;
-		try
-		{
+		try {
 			imageId = Integer.parseInt(imageIdStr);
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		ImageService imageService = DAOFactory.getImageServiceInstance();
 		Image image = imageService.getPreviousImageOfAlbum(imageId);
-		
+
 		request.setAttribute("image", image);
-		request.getRequestDispatcher("imageOfAlbumManagement.jsp").forward(request, response);
+		request.getRequestDispatcher("imageOfAlbumManagement.jsp").forward(
+				request, response);
 	}
 
 }

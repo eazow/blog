@@ -14,37 +14,34 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Draft;
 import com.eazow.blog.service.DraftService;
 
-
 @SuppressWarnings("serial")
-public class ManageDraftsAdminServlet extends HttpServlet
-{
+public class ManageDraftsAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		DraftService draftService = DAOFactory.getDraftServiceInstance();
 		List<Draft> draftsList = draftService.getAllDrafts();
 		int draftsNum = draftService.getAllDraftsNum();
-		
+
 		request.setAttribute("draftsList", draftsList);
 		request.setAttribute("draftsNum", draftsNum);
-		
-		request.getRequestDispatcher("draftsManagement.jsp").forward(request, response);
+
+		request.getRequestDispatcher("draftsManagement.jsp").forward(request,
+				response);
 	}
 
 }

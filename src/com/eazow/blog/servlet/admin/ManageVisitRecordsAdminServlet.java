@@ -15,64 +15,57 @@ import com.eazow.blog.entity.VisitRecord;
 import com.eazow.blog.service.VisitRecordService;
 import com.eazow.blog.util.VisitRecordPageUtil;
 
-
 @SuppressWarnings("serial")
-public class ManageVisitRecordsAdminServlet extends HttpServlet
-{
+public class ManageVisitRecordsAdminServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "请登录");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String pageNumStr = request.getParameter("pageNum");
 		int pageNum = 1;
-		if(null==pageNumStr || "".equals(pageNumStr))
-		{
+		if (null == pageNumStr || "".equals(pageNumStr)) {
 			pageNum = 1;
-		}
-		else
-		{
-			try
-			{
+		} else {
+			try {
 				pageNum = Integer.parseInt(pageNumStr);
-			}
-			catch(NumberFormatException e)
-			{
+			} catch (NumberFormatException e) {
 				response.sendError(400, "Input Violation");
 				return;
 			}
 		}
 		VisitRecordPageUtil visitRecordPageUtil = new VisitRecordPageUtil();
-		VisitRecordService visitRecordService = DAOFactory.getVisitRecordServiceInstance();
-		int totalPages = visitRecordService.getTotalPages(visitRecordPageUtil.getPageSize());
-		//输入pageNum非法
-		if(totalPages < pageNum)
-		{
+		VisitRecordService visitRecordService = DAOFactory
+				.getVisitRecordServiceInstance();
+		int totalPages = visitRecordService.getTotalPages(visitRecordPageUtil
+				.getPageSize());
+		// 输入pageNum非法
+		if (totalPages < pageNum) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		visitRecordPageUtil.setCurrentPage(pageNum);
 		visitRecordPageUtil.setTotalPages(totalPages);
-		List<VisitRecord> visitRecordsList = visitRecordService.getVisitRecords(pageNum, visitRecordPageUtil.getPageSize());
-		
+		List<VisitRecord> visitRecordsList = visitRecordService
+				.getVisitRecords(pageNum, visitRecordPageUtil.getPageSize());
+
 		request.setAttribute("visitRecordPageUtil", visitRecordPageUtil);
 		request.setAttribute("visitRecordsList", visitRecordsList);
-		request.getRequestDispatcher("visitRecordsManagement.jsp").forward(request, response);
+		request.getRequestDispatcher("visitRecordsManagement.jsp").forward(
+				request, response);
 	}
 
 }

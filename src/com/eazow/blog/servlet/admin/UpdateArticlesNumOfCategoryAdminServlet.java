@@ -13,58 +13,51 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Category;
 import com.eazow.blog.service.CategoryService;
 
-
 @SuppressWarnings("serial")
-public class UpdateArticlesNumOfCategoryAdminServlet extends HttpServlet
-{
+public class UpdateArticlesNumOfCategoryAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String categoryIdStr = request.getParameter("categoryId");
 		String articlesNumStr = request.getParameter("articlesNum");
-		if(null==categoryIdStr || "".equals(categoryIdStr) || null==articlesNumStr || "".equals(articlesNumStr))
-		{
+		if (null == categoryIdStr || "".equals(categoryIdStr)
+				|| null == articlesNumStr || "".equals(articlesNumStr)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int categoryId = 0;
 		int articlesNum = 0;
-		try
-		{
+		try {
 			categoryId = Integer.parseInt(categoryIdStr);
 			articlesNum = Integer.parseInt(articlesNumStr.trim());
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
-		CategoryService categoryService = DAOFactory.getCategoryServiceInstance();
+		CategoryService categoryService = DAOFactory
+				.getCategoryServiceInstance();
 		Category category = categoryService.getCategory(categoryId);
-		if(null == category || articlesNum<0)
-		{
+		if (null == category || articlesNum < 0) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		category.setArticlesNum(articlesNum);
 		categoryService.updateCategory(category);
-		
+
 		response.sendRedirect("manageCategoriesAdminServlet");
 	}
 

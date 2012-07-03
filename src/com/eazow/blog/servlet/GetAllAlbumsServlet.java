@@ -12,25 +12,21 @@ import com.eazow.blog.dao.factory.DAOFactory;
 import com.eazow.blog.entity.Album;
 import com.eazow.blog.service.AlbumService;
 
-
 @SuppressWarnings("serial")
-public class GetAllAlbumsServlet extends HttpServlet
-{
+public class GetAllAlbumsServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		AlbumService albumService = DAOFactory.getAlbumServiceInstance();
 		List<Album> albumsList = albumService.getAllAlbums();
-		
+
 		request.setAttribute("albumsList", albumsList);
 		request.getRequestDispatcher("albums.jsp").forward(request, response);
 	}

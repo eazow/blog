@@ -14,34 +14,31 @@ import com.eazow.blog.entity.Message;
 import com.eazow.blog.service.MessageService;
 import com.eazow.blog.service.VisitRecordService;
 
-
 @SuppressWarnings("serial")
-public class GetProfileServlet extends HttpServlet
-{
+public class GetProfileServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
-		VisitRecordService visitRecordService = DAOFactory.getVisitRecordServiceInstance();
+			throws ServletException, IOException {
+		VisitRecordService visitRecordService = DAOFactory
+				.getVisitRecordServiceInstance();
 		int totalPageView = visitRecordService.getTotalPageView();
 		int todayPageView = visitRecordService.getTodayPageView(new Date());
-		
+
 		request.setAttribute("totalPageView", totalPageView);
 		request.setAttribute("todayPageView", todayPageView);
-		
-		//Message
+
+		// Message
 		MessageService messageService = DAOFactory.getMessageServiceInstance();
 		List<Message> messagesList = messageService.getAllMessages();
 		request.setAttribute("messagesList", messagesList);
-		
+
 		request.getRequestDispatcher("profile.jsp").forward(request, response);
 	}
 

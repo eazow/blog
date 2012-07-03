@@ -25,5 +25,4 @@ public class LogoutServlet extends HttpServlet {
 		response.sendRedirect("/blog/admin/listBlogs.jsp");
 	}
 
-
 }

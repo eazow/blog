@@ -6,43 +6,35 @@ import com.eazow.blog.dao.MottoDAO;
 import com.eazow.blog.entity.Motto;
 import com.eazow.blog.service.MottoService;
 
-
-public class MottoServiceImpl implements MottoService
-{
+public class MottoServiceImpl implements MottoService {
 	private MottoDAO mottoDAO;
-	
+
 	private static MottoService mottoService;
-	
-	private MottoServiceImpl(MottoDAO mottoDAO)
-	{
+
+	private MottoServiceImpl(MottoDAO mottoDAO) {
 		this.mottoDAO = mottoDAO;
 	}
-	
-	public static MottoService getMottoServiceInstance(MottoDAO mottoDAO)
-	{
-		if(null == mottoService)
+
+	public static MottoService getMottoServiceInstance(MottoDAO mottoDAO) {
+		if (null == mottoService)
 			mottoService = new MottoServiceImpl(mottoDAO);
 		return mottoService;
 	}
-	
-	public List<Motto> getAllMottos()
-	{
+
+	public List<Motto> getAllMottos() {
 		return this.mottoDAO.getAllMottos();
 	}
-	
-	public boolean addMotto(Motto motto)
-	{
+
+	public boolean addMotto(Motto motto) {
 		Motto mottoTemp = this.mottoDAO.getMotto(motto.getContent());
-		//motto已存在
-		if(null != mottoTemp)
-		{
+		// motto已存在
+		if (null != mottoTemp) {
 			return false;
 		}
 		return this.mottoDAO.addMotto(motto);
 	}
-	
-	public Motto getRandomMotto()
-	{
+
+	public Motto getRandomMotto() {
 		return this.mottoDAO.getRandomMotto();
 	}
 }

@@ -14,34 +14,31 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Motto;
 import com.eazow.blog.service.MottoService;
 
-
 @SuppressWarnings("serial")
-public class ManageMottosAdminServlet extends HttpServlet
-{
+public class ManageMottosAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		MottoService mottoService = DAOFactory.getMottoServiceInstance();
 		List<Motto> mottosList = mottoService.getAllMottos();
 		request.setAttribute("mottosList", mottosList);
-		
-		request.getRequestDispatcher("mottosManagement.jsp").forward(request, response);
+
+		request.getRequestDispatcher("mottosManagement.jsp").forward(request,
+				response);
 	}
 
 }

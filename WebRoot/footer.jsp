@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+			<!--
 					<div id="contentCFoot"></div>
 				</div>
+			-->
 			</div>
 		</div>
 		<div class="footer">

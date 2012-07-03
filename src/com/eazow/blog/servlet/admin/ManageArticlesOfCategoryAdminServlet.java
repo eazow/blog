@@ -15,52 +15,48 @@ import com.eazow.blog.entity.Article;
 import com.eazow.blog.service.ArticleService;
 import com.eazow.blog.service.DraftService;
 
-
 @SuppressWarnings("serial")
-public class ManageArticlesOfCategoryAdminServlet extends HttpServlet
-{
+public class ManageArticlesOfCategoryAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String categoryIdStr = request.getParameter("categoryId");
 		int categoryId = 0;
-		try
-		{
+		try {
 			categoryId = Integer.parseInt(categoryIdStr);
-		}
-		catch (NumberFormatException e) 
-		{
+		} catch (NumberFormatException e) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		ArticleService articleService = DAOFactory.getArticleServiceInstance();
-		List<Article> articlesList = articleService.getArticlesOfCategory(categoryId);
+		List<Article> articlesList = articleService
+				.getArticlesOfCategory(categoryId);
 		request.setAttribute("articlesList", articlesList);
-//		CategoryService categoryService = DAOFactory.getCategoryServiceInstance();
-//		List<Category> categoriesList = categoryService.getAllCategories();
-//		request.setAttribute("categoriesList", categoriesList);
-		
+		// CategoryService categoryService =
+		// DAOFactory.getCategoryServiceInstance();
+		// List<Category> categoriesList = categoryService.getAllCategories();
+		// request.setAttribute("categoriesList", categoriesList);
+
 		DraftService draftService = DAOFactory.getDraftServiceInstance();
 		int draftsNum = draftService.getAllDraftsNum();
 		request.setAttribute("draftsNum", draftsNum);
-		
-		request.getRequestDispatcher("articlesManagement.jsp").forward(request, response);
+
+		request.getRequestDispatcher("articlesManagement.jsp").forward(request,
+				response);
 	}
 
 }

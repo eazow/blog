@@ -10,23 +10,19 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
 
-public class AccessJSPDirectlyFilter implements Filter
-{
-	public void destroy()
-	{
+public class AccessJSPDirectlyFilter implements Filter {
+	public void destroy() {
 		// TODO Auto-generated method stub
 
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response,
-			FilterChain chain) throws IOException, ServletException
-	{
-		HttpServletResponse httpResponse = (HttpServletResponse)response;
+			FilterChain chain) throws IOException, ServletException {
+		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		httpResponse.sendRedirect("/blog/getIndexArticlesServlet");
 	}
 
-	public void init(FilterConfig filterConfig) throws ServletException
-	{
+	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 
 	}

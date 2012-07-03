@@ -16,34 +16,29 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.Album;
 import com.eazow.blog.service.AlbumService;
 
-
 @SuppressWarnings("serial")
-public class AjaxAddAlbumAdminServlet extends HttpServlet
-{
+public class AjaxAddAlbumAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		response.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "请登录");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String albumName = request.getParameter("albumName");
 		albumName = URLDecoder.decode(albumName, "utf-8");
-		if(null==albumName || "".equals(albumName))
-		{
+		if (null == albumName || "".equals(albumName)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
@@ -51,24 +46,21 @@ public class AjaxAddAlbumAdminServlet extends HttpServlet
 		Album album = new Album(albumName, 0, 0);
 
 		AlbumService albumService = DAOFactory.getAlbumServiceInstance();
-		//分类名重复
-		if(!albumService.addAlbum(album))
-		{
+		// 分类名重复
+		if (!albumService.addAlbum(album)) {
 			PrintWriter out = response.getWriter();
 			out.println("ERROR");
 			out.flush();
 			out.close();
 			return;
 		}
-		//分类加入成功
+		// 分类加入成功
 		List<Album> albumsList = albumService.getAllAlbums();
 		PrintWriter out = response.getWriter();
 		out.print("<select name='albumId'>");
-		for(Album albumTemp: albumsList)
-		{
-			out.print("<option value='"+albumTemp.getId()+"'>" +
-						albumTemp.getName() +
-					  "</option>");
+		for (Album albumTemp : albumsList) {
+			out.print("<option value='" + albumTemp.getId() + "'>"
+					+ albumTemp.getName() + "</option>");
 		}
 		out.print("</select>");
 		out.flush();

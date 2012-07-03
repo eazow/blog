@@ -51,121 +51,129 @@ import com.eazow.blog.service.impl.MottoServiceImpl;
 import com.eazow.blog.service.impl.TagServiceImpl;
 import com.eazow.blog.service.impl.VisitRecordServiceImpl;
 
-
-public class DAOFactory
-{
-	//Article
-	public static ArticleDAO getArticleDAOInstance() 
-	{
+public class DAOFactory {
+	// Article
+	public static ArticleDAO getArticleDAOInstance() {
 		return ArticleDAOImpl.getArticleDAOInstance();
 	}
-	public static ArticleService getArticleServiceInstance()
-	{
-		return ArticleServiceImpl.getArticleServiceInstance(getArticleDAOInstance(), getCategoryDAOInstance(), 
-				getCommentDAOInstance(), getArticleArchiveDAOInstance(), getTagDAOInstance(), getTagArticleDAOInstance());
+
+	public static ArticleService getArticleServiceInstance() {
+		return ArticleServiceImpl.getArticleServiceInstance(
+				getArticleDAOInstance(), getCategoryDAOInstance(),
+				getCommentDAOInstance(), getArticleArchiveDAOInstance(),
+				getTagDAOInstance(), getTagArticleDAOInstance());
 	}
-	//Category
-	public static CategoryDAO getCategoryDAOInstance()
-	{
+
+	// Category
+	public static CategoryDAO getCategoryDAOInstance() {
 		return CategoryDAOImpl.getCategoryDAOInstance();
 	}
-	public static CategoryService getCategoryServiceInstance()
-	{
-		return CategoryServiceImpl.getCategoryServiceInstance(getCategoryDAOInstance(), getArticleDAOInstance());
+
+	public static CategoryService getCategoryServiceInstance() {
+		return CategoryServiceImpl.getCategoryServiceInstance(
+				getCategoryDAOInstance(), getArticleDAOInstance());
 	}
-	//Comment
-	public static CommentDAO getCommentDAOInstance()
-	{
+
+	// Comment
+	public static CommentDAO getCommentDAOInstance() {
 		return CommentDAOImpl.getCommentDAOInstance();
 	}
-	public static CommentService getCommentServiceInstance()
-	{
-		return CommentServiceImpl.getCommentServiceInstance(getCommentDAOInstance(), getArticleDAOInstance());
+
+	public static CommentService getCommentServiceInstance() {
+		return CommentServiceImpl.getCommentServiceInstance(
+				getCommentDAOInstance(), getArticleDAOInstance());
 	}
-	//Admin
-	public static AdminDAO getAdminDAOInstance()
-	{
+
+	// Admin
+	public static AdminDAO getAdminDAOInstance() {
 		return AdminDAOImpl.getAdminDAOInstance();
 	}
-	public static AdminService getAdminServiceInstance()
-	{
+
+	public static AdminService getAdminServiceInstance() {
 		return AdminServiceImpl.getAdminServiceInstance(getAdminDAOInstance());
 	}
-	//Image
-	public static ImageDAO getImageDAOInstance()
-	{
+
+	// Image
+	public static ImageDAO getImageDAOInstance() {
 		return ImageDAOImpl.getImageDAOInstance();
 	}
-	public static ImageService getImageServiceInstance()
-	{
-		return ImageServiceImpl.getImageServiceInstance(getImageDAOInstance(), getAlbumDAOInstance());
+
+	public static ImageService getImageServiceInstance() {
+		return ImageServiceImpl.getImageServiceInstance(getImageDAOInstance(),
+				getAlbumDAOInstance());
 	}
-	//Album
-	public static AlbumDAO getAlbumDAOInstance()
-	{
+
+	// Album
+	public static AlbumDAO getAlbumDAOInstance() {
 		return AlbumDAOImpl.getAlbumDAOInstance();
 	}
-	public static AlbumService getAlbumServiceInstance()
-	{
-		return AlbumServiceImpl.getAlbumServiceInstance(getAlbumDAOInstance(), getImageDAOInstance());
+
+	public static AlbumService getAlbumServiceInstance() {
+		return AlbumServiceImpl.getAlbumServiceInstance(getAlbumDAOInstance(),
+				getImageDAOInstance());
 	}
-	//VisitRecord
-	public static VisitRecordDAO getVisitRecordDAOInstance()
-	{
+
+	// VisitRecord
+	public static VisitRecordDAO getVisitRecordDAOInstance() {
 		return VisitRecordDAOImpl.getVisitRecordDAOInstance();
 	}
-	public static VisitRecordService getVisitRecordServiceInstance()
-	{
-		return VisitRecordServiceImpl.getVisitRecordService(getVisitRecordDAOInstance());
+
+	public static VisitRecordService getVisitRecordServiceInstance() {
+		return VisitRecordServiceImpl
+				.getVisitRecordService(getVisitRecordDAOInstance());
 	}
-	//ArticleArchive
-	public static ArticleArchiveDAO getArticleArchiveDAOInstance()
-	{
+
+	// ArticleArchive
+	public static ArticleArchiveDAO getArticleArchiveDAOInstance() {
 		return ArticleArchiveDAOImpl.getArticleArchiveDAOInstance();
 	}
-	public static ArticleArchiveService getArticleArchiveServiceInstance()
-	{
-		return ArticleArchiveServiceImpl.getArticleArchiveServiceInstance(getArticleArchiveDAOInstance(), getArticleDAOInstance());
+
+	public static ArticleArchiveService getArticleArchiveServiceInstance() {
+		return ArticleArchiveServiceImpl.getArticleArchiveServiceInstance(
+				getArticleArchiveDAOInstance(), getArticleDAOInstance());
 	}
-	//Draft
-	public static DraftDAO getDraftDAOInstance()
-	{
+
+	// Draft
+	public static DraftDAO getDraftDAOInstance() {
 		return DraftDAOImpl.getDraftDAOInstance();
 	}
-	public static DraftService getDraftServiceInstance()
-	{
-		return DraftServiceImpl.getDraftServiceInstance(getDraftDAOInstance(), getCategoryDAOInstance());
+
+	public static DraftService getDraftServiceInstance() {
+		return DraftServiceImpl.getDraftServiceInstance(getDraftDAOInstance(),
+				getCategoryDAOInstance());
 	}
-	//Motto
-	public static MottoDAO getMottoDAOInstance()
-	{
+
+	// Motto
+	public static MottoDAO getMottoDAOInstance() {
 		return MottoDAOImpl.getMottoDAOInstance();
 	}
-	public static MottoService getMottoServiceInstance()
-	{
+
+	public static MottoService getMottoServiceInstance() {
 		return MottoServiceImpl.getMottoServiceInstance(getMottoDAOInstance());
 	}
-	//Tag
-	public static TagDAO getTagDAOInstance()
-	{
+
+	// Tag
+	public static TagDAO getTagDAOInstance() {
 		return TagDAOImpl.getTagDAOInstance();
 	}
-	public static TagService getTagServiceInstance()
-	{
-		return TagServiceImpl.getTagServiceInstance(getTagDAOInstance(), getTagArticleDAOInstance(), getArticleDAOInstance());
+
+	public static TagService getTagServiceInstance() {
+		return TagServiceImpl.getTagServiceInstance(getTagDAOInstance(),
+				getTagArticleDAOInstance(), getArticleDAOInstance());
 	}
-	//TagArticle
-	public static TagArticleDAO getTagArticleDAOInstance()
-	{
+
+	// TagArticle
+	public static TagArticleDAO getTagArticleDAOInstance() {
 		return TagArticleDAOImpl.getTagArticleDAOInstance();
 	}
-	//Message¡Ù—‘
-	public static MessageDAO getMessageDAOInstance()
-	{
+
+	// Message¡Ù—‘
+	public static MessageDAO getMessageDAOInstance() {
 		return MessageDAOImpl.getMessageDAOInstance();
 	}
-	public static MessageService getMessageServiceInstance()
-	{
-		return MessageServiceImpl.getMessageServiceImpl(getMessageDAOInstance());
+
+	public static MessageService getMessageServiceInstance() {
+		return MessageServiceImpl
+				.getMessageServiceImpl(getMessageDAOInstance());
 	}
 }

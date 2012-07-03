@@ -14,35 +14,34 @@ import com.eazow.blog.entity.Admin;
 import com.eazow.blog.entity.ArticleArchive;
 import com.eazow.blog.service.ArticleArchiveService;
 
-
 @SuppressWarnings("serial")
-public class ManageArticleArchivesAdminServlet extends HttpServlet
-{
+public class ManageArticleArchivesAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
-		
-		ArticleArchiveService articleArchiveService = DAOFactory.getArticleArchiveServiceInstance();
-		List<ArticleArchive> articleArchivesList = articleArchiveService.manageAllArticleArchives();
+
+		ArticleArchiveService articleArchiveService = DAOFactory
+				.getArticleArchiveServiceInstance();
+		List<ArticleArchive> articleArchivesList = articleArchiveService
+				.manageAllArticleArchives();
 		request.setAttribute("articleArchivesList", articleArchivesList);
-		
-		request.getRequestDispatcher("articleArchivesManagement.jsp").forward(request, response);
+
+		request.getRequestDispatcher("articleArchivesManagement.jsp").forward(
+				request, response);
 	}
 
 }

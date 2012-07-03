@@ -15,62 +15,51 @@ import com.eazow.blog.entity.Message;
 import com.eazow.blog.service.MessageService;
 import com.eazow.blog.util.DateUtil;
 
-
 @SuppressWarnings("serial")
-public class UpdateMessageAdminServlet extends HttpServlet
-{
+public class UpdateMessageAdminServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
+
 		HttpSession session = request.getSession();
-		Admin admin = (Admin)session.getAttribute("admin");
-		if(null == admin)
-		{
+		Admin admin = (Admin) session.getAttribute("admin");
+		if (null == admin) {
 			request.setAttribute("usernameErrorMessage", "ÇëµÇÂ¼");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			request.getRequestDispatcher("login.jsp")
+					.forward(request, response);
 			return;
 		}
 		String idStr = request.getParameter("id");
 		String nickname = request.getParameter("nickname");
 		String content = request.getParameter("content");
 		String dateStr = request.getParameter("date");
-		if(null==idStr || "".equals(idStr))
-		{
+		if (null == idStr || "".equals(idStr)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
-		if(null==nickname || "".equals(nickname))
-		{
+		if (null == nickname || "".equals(nickname)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
-		if(null==content || "".equals(content))
-		{
+		if (null == content || "".equals(content)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
-		if(null==dateStr || "".equals(dateStr))
-		{
+		if (null == dateStr || "".equals(dateStr)) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int id = 0;
-		try
-		{
+		try {
 			id = Integer.parseInt(idStr);
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			response.sendError(400, "Input Violation");
 			return;
@@ -79,7 +68,7 @@ public class UpdateMessageAdminServlet extends HttpServlet
 		Message message = new Message(id, nickname, content, date);
 		MessageService messageService = DAOFactory.getMessageServiceInstance();
 		messageService.updateMessage(message);
-		
+
 		response.sendRedirect("manageMessagesAdminServlet");
 	}
 

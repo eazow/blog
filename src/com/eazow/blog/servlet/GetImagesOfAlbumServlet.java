@@ -14,33 +14,26 @@ import com.eazow.blog.entity.Image;
 import com.eazow.blog.service.AlbumService;
 import com.eazow.blog.service.ImageService;
 
-
 @SuppressWarnings("serial")
-public class GetImagesOfAlbumServlet extends HttpServlet
-{
+public class GetImagesOfAlbumServlet extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		String albumIdStr = request.getParameter("albumId");
-		if(null == albumIdStr)
-		{
+		if (null == albumIdStr) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int albumId = 0;
-		try
-		{
+		try {
 			albumId = Integer.parseInt(albumIdStr);
-		}
-		catch (NumberFormatException e) 
-		{
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			response.sendError(400, "Input Violation");
 			return;
@@ -49,11 +42,12 @@ public class GetImagesOfAlbumServlet extends HttpServlet
 		AlbumService albumService = DAOFactory.getAlbumServiceInstance();
 		List<Image> imagesList = imageService.getImagesOfAlbum(albumId);
 		Album album = albumService.getAlbum(albumId);
-		
+
 		request.setAttribute("imagesList", imagesList);
 		request.setAttribute("album", album);
-		
-		request.getRequestDispatcher("imagesOfAlbum.jsp").forward(request, response);
+
+		request.getRequestDispatcher("imagesOfAlbum.jsp").forward(request,
+				response);
 	}
 
 }

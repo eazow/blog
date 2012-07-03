@@ -10,44 +10,37 @@ import com.eazow.blog.dao.factory.DAOFactory;
 import com.eazow.blog.entity.Image;
 import com.eazow.blog.service.ImageService;
 
-
 @SuppressWarnings("serial")
-public class BrowsePreviousImageOfAlbumServlet extends HttpServlet
-{
+public class BrowsePreviousImageOfAlbumServlet extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		this.doPost(request, response);
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-	{
+			throws ServletException, IOException {
 		String imageIdStr = request.getParameter("imageId");
-		if(null == imageIdStr)
-		{
+		if (null == imageIdStr) {
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		int imageId;
-		try
-		{
+		try {
 			imageId = Integer.parseInt(imageIdStr);
-		}
-		catch(NumberFormatException e)
-		{
+		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			response.sendError(400, "Input Violation");
 			return;
 		}
 		ImageService imageService = DAOFactory.getImageServiceInstance();
 		Image image = imageService.getPreviousImageOfAlbum(imageId);
-		
+
 		request.setAttribute("image", image);
-		request.getRequestDispatcher("imageBrowseOfAlbum.jsp").forward(request, response);
+		request.getRequestDispatcher("imageBrowseOfAlbum.jsp").forward(request,
+				response);
 	}
 
 }

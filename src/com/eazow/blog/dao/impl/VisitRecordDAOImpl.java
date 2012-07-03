@@ -10,197 +10,153 @@ import com.eazow.blog.dao.connector.DBConnector;
 import com.eazow.blog.entity.VisitRecord;
 import com.eazow.blog.util.DateUtil;
 
-
-
-public class VisitRecordDAOImpl implements VisitRecordDAO
-{
+public class VisitRecordDAOImpl implements VisitRecordDAO {
 	private static VisitRecordDAO visitRecordDAO = null;
-	
-	private VisitRecordDAOImpl()
-	{
+
+	private VisitRecordDAOImpl() {
 	}
-	
-	public static VisitRecordDAO getVisitRecordDAOInstance()
-	{
-		if(null == visitRecordDAO)
+
+	public static VisitRecordDAO getVisitRecordDAOInstance() {
+		if (null == visitRecordDAO)
 			visitRecordDAO = new VisitRecordDAOImpl();
 		return visitRecordDAO;
 	}
-	
-	public synchronized boolean addRecord(VisitRecord visitRecord)
-	{
+
+	public synchronized boolean addRecord(VisitRecord visitRecord) {
 		int result = 0;
 		DBConnector dbConnector = null;
 		String sql = "insert into visit_record(source_ip, visit_date) values(?, now())";
-		try
-		{
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.pstmt = dbConnector.conn.prepareStatement(sql);
 			dbConnector.pstmt.setString(1, visitRecord.getSourceIP());
 			result = dbConnector.pstmt.executeUpdate();
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
-		if(result==1)
+		if (result == 1)
 			return true;
 		else
 			return false;
 	}
-	
-	public int getTotalPageView()
-	{
+
+	public int getTotalPageView() {
 		int totalPageView = 0;
 		DBConnector dbConnector = null;
 		String sql = "select count(*) from visit_record";
-		try
-		{
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.stmt = dbConnector.conn.createStatement();
 			dbConnector.rs = dbConnector.stmt.executeQuery(sql);
-			if(dbConnector.rs.next())
-			{
+			if (dbConnector.rs.next()) {
 				totalPageView = dbConnector.rs.getInt(1);
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
 		return totalPageView;
 	}
-	
-	public int getTodayPageView(Date today)
-	{
+
+	public int getTodayPageView(Date today) {
 		int totalPageView = 0;
 		DBConnector dbConnector = null;
-		String sql = "select count(*) from visit_record where visit_date >= '" + DateUtil.getTodayMinTime(today)
-			+ "' and visit_date <= '" + DateUtil.getTodayMaxTime(today) + "'";
-		try
-		{
+		String sql = "select count(*) from visit_record where visit_date >= '"
+				+ DateUtil.getTodayMinTime(today) + "' and visit_date <= '"
+				+ DateUtil.getTodayMaxTime(today) + "'";
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.stmt = dbConnector.conn.createStatement();
 			dbConnector.rs = dbConnector.stmt.executeQuery(sql);
-			if(dbConnector.rs.next())
-			{
+			if (dbConnector.rs.next()) {
 				totalPageView = dbConnector.rs.getInt(1);
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
 		return totalPageView;
 	}
-	
-	public List<VisitRecord> getAllVisitRecords()
-	{
+
+	public List<VisitRecord> getAllVisitRecords() {
 		List<VisitRecord> visitRecordsList = new ArrayList<VisitRecord>();
 		DBConnector dbConnector = null;
 		String sql = "select * from visit_record";
-		try
-		{
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.stmt = dbConnector.conn.createStatement();
 			dbConnector.rs = dbConnector.stmt.executeQuery(sql);
 			VisitRecord visitRecord = null;
-			while(dbConnector.rs.next())
-			{
-				visitRecord = new VisitRecord(dbConnector.rs.getInt("id"), dbConnector.rs.getString("source_ip"), 
-						dbConnector.rs.getTimestamp("visit_date"));
+			while (dbConnector.rs.next()) {
+				visitRecord = new VisitRecord(dbConnector.rs.getInt("id"),
+						dbConnector.rs.getString("source_ip"), dbConnector.rs
+								.getTimestamp("visit_date"));
 				visitRecordsList.add(visitRecord);
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
 		return visitRecordsList;
 	}
-	
-	public List<VisitRecord> getVisitRecords(int pageNum, int pageSize)
-	{
-		int startLocation = (pageNum-1) * pageSize;
+
+	public List<VisitRecord> getVisitRecords(int pageNum, int pageSize) {
+		int startLocation = (pageNum - 1) * pageSize;
 		List<VisitRecord> visitRecordsList = new ArrayList<VisitRecord>();
 		DBConnector dbConnector = null;
-		String sql = "select * from visit_record limit " + startLocation + ", " + pageSize;
-		try
-		{
+		String sql = "select * from visit_record limit " + startLocation + ", "
+				+ pageSize;
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.stmt = dbConnector.conn.createStatement();
 			dbConnector.rs = dbConnector.stmt.executeQuery(sql);
 			VisitRecord visitRecord = null;
-			while(dbConnector.rs.next())
-			{
-				visitRecord = new VisitRecord(dbConnector.rs.getInt("id"), dbConnector.rs.getString("source_ip"), 
-						dbConnector.rs.getTimestamp("visit_date"));
+			while (dbConnector.rs.next()) {
+				visitRecord = new VisitRecord(dbConnector.rs.getInt("id"),
+						dbConnector.rs.getString("source_ip"), dbConnector.rs
+								.getTimestamp("visit_date"));
 				visitRecordsList.add(visitRecord);
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
 		return visitRecordsList;
 	}
-	
-	public int getTotalPages(int pageSize)
-	{
+
+	public int getTotalPages(int pageSize) {
 		DBConnector dbConnector = null;
 		String sql = "select count(*) from visit_record";
 		int totalResultsNum = 0;
-		try
-		{
+		try {
 			dbConnector = new DBConnector();
 			dbConnector.stmt = dbConnector.conn.createStatement();
 			dbConnector.rs = dbConnector.stmt.executeQuery(sql);
-			if(dbConnector.rs.next())
-			{
+			if (dbConnector.rs.next()) {
 				totalResultsNum = dbConnector.rs.getInt(1);
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
-		if(totalResultsNum%pageSize == 0)
-			return totalResultsNum/pageSize;
+		if (totalResultsNum % pageSize == 0)
+			return totalResultsNum / pageSize;
 		else
-			return totalResultsNum/pageSize + 1;
+			return totalResultsNum / pageSize + 1;
 	}
-	
-	public boolean deleteVisitRecord(int id)
-	{
+
+	public boolean deleteVisitRecord(int id) {
 		DBConnector dbConnector = null;
 		int result = 0;
 		boolean flag = true;
-		try 
-		{
+		try {
 			dbConnector = new DBConnector();
 			String sql = "delete from visit_record where id = " + id;
 			dbConnector.stmt = dbConnector.conn.createStatement();
@@ -208,13 +164,9 @@ public class VisitRecordDAOImpl implements VisitRecordDAO
 			if (result == 0) {
 				flag = false;
 			}
-		}
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		finally
-		{
+		} finally {
 			dbConnector.closeConnection();
 		}
 		return flag;
