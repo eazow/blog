@@ -8,7 +8,6 @@
 %>
 <%@ include file="header.jsp"%>
 <div class="container">
-	<%@ include file="slides.html"%>
 	<div class="main">
 		<div class="content">
 			<%
