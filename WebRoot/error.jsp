@@ -30,7 +30,7 @@
 		}
 		else if(remainingTime<=0)
 		{
-			window.location.href = "index";
+	//		window.location.href = "index";
 		}
 		remainingTime--;
 		setTimeout("countDown()", 1000);

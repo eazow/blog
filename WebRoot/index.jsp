@@ -28,6 +28,10 @@
 							<%= article.getTitle() %>
 						</a>
 					</h1>
+					<!-- 
+					<div class="descr" style="position: absolute; margin-top: -29px; width: 160px; margin-left: -60px; background-image: url(img/date_bg.png); height: 70px; background-position: 0, 100%; background-repeat: no-repeat">
+						<div style="width: 86px; height: 56px; background-color: #EB374B; color: white">
+					-->
 					<div class="descr">
 						<%= article.getPostDateDisplay() %>
 					</div>
