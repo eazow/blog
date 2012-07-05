@@ -1,6 +1,5 @@
 #slides {
 	z-index:100;
-	margin-left: 10px;
 }
 
 /*
@@ -11,7 +10,7 @@
 */
 
 .slides_container {
-	width:940px;
+	width:1280px;
 	overflow:hidden;
 	position:relative;
 	display:none;
@@ -26,8 +25,8 @@
 */
 
 .slides_container div.slide {
-	width:940px;
-	height:270px;
+	width:1280px;
+	height:300px;
 	display:block;
 }
 

@@ -37,7 +37,11 @@
 	 			</ul>
 			</div>
 		</div>
-		<div style="background-image: url('img/bg.png'); background-repeat: repeat-x; background-color: #D3E9F8">
+		<%@ include file="slides.html"%>
+	<!--
+		<div style="background-image: url('img/bg.png'); background-repeat: repeat-x; background-color: #D3E9F8"> 
+	-->
+		<div style="background-color: #fffffe">
 			<div style="/*background-image: url('img/clouds.png'); */background-repeat: no-repeat; padding-top: 20px; background-position: -28px 300px">
 			
 			<!--	<div id="mainWrapper">-->

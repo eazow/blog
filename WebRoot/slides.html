@@ -2,28 +2,24 @@
 <div id="slides">
 	<div class="slides_container">
 		<div class="slide">
-			<img src="img/slides/photo-1.jpg" width="940" height="270" alt="Slide 1"></a>
+			<img src="img/slides/photo-1.jpg" width="1280" alt="Slide 1"></a>
+			<!-- 
 			<div class="caption" style="bottom:0">
 				<p></p>
 			</div>
+			 -->
 		</div>
 		<div class="slide">
-			<img src="img/slides/photo-2.jpg" width="940" height="270" alt="Slide 2"></a>
-			<div class="caption" style="bottom:0">
-				<p></p>
-			</div>
+			<img src="img/slides/photo-2.jpg" width="1280" alt="Slide 2"></a>
 		</div>
 		<div class="slide">
-			<img src="img/slides/photo-3.jpg" width="940" height="270" alt="Slide 3"></a>
-			<div class="caption">
-				<p>Happy Bokeh raining Day</p>
-			</div>
+			<img src="img/slides/photo-3.jpg" width="1280" alt="Slide 3"></a>
 		</div>
 		<div class="slide">
-			<img src="img/slides/photo-4.jpg" width="940" height="270" alt="Slide 4"></a>
-			<div class="caption">
-				<p>We Eat Light</p>
-			</div>
+			<img src="img/slides/photo-4.jpg" width="1280" alt="Slide 4"></a>
+		</div>
+		<div class="slide">
+			<img src="img/slides/photo-5.jpg" width="1280" alt="Slide 5"></a>
 		</div>
 	</div>
 </div>
@@ -33,9 +29,11 @@
 <script>
 	$(function(){
 		$('#slides').slides({
+			preload: true,
 			slideSpeed: 2000,
 			effect: 'fade',
-			play: 5500
+			play: 5500,
+			pagination: false
 		});
 	});
 </script>

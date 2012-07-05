@@ -13,7 +13,8 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow-y: scroll;
-	background-color: #2F2F2F;
+	overflow-x: hidden;
+	background-color: #fffffe;
 }
 input {
 	color: #555;
@@ -228,10 +229,14 @@ h1,h2,h3 {
 
 /* footer */
 .footer {
+/*	
 	background-image: url(../img/foot_bg.png);
 	background-repeat: repeat;
+*/
 	color: #aaa;
-	height: 260px;
+/*	height: 260px; */
+	height: 60px;
+	line-height: 80px;
 	width: 100%
 	font-size: 12px;
 	text-align: center;
