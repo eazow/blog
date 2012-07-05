@@ -7,6 +7,7 @@
 	String location = "index";
 %>
 <%@ include file="header.jsp"%>
+<%@ include file="scroll.html"%>
 <div class="container">
 	<div class="main">
 		<div class="content">

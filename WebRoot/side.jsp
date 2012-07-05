@@ -76,7 +76,7 @@
 		<object type="application/x-shockwave-flash" data="flash/3dtags.swf"
 			width="200" height="200">
 			<param name="movie" value="flash/3dtags.swf" />
-			<param name="bgcolor" value="#D3E9F8" />
+			<param name="bgcolor" value="#ffffff" />
 			<param name="AllowScriptAccess" value="always" />
 			<param name="flashvars"
 				value='jsonData=

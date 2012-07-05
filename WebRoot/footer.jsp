@@ -2,9 +2,10 @@
 			<!--
 					<div id="contentCFoot"></div>
 				</div>
-			-->
+			
 			</div>
 		</div>
+		-->
 		<div class="footer">
 			<!--
 			<div style="background-repeat: repeat-x; background-color: transparent;background-image: url(img/footer_skyline.png); width: 100%; height: 210px">
