@@ -17,13 +17,7 @@ public class DBConnector {
 	public DBConnector() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			url = "jdbc:mysql://localhost/blog?user=root&password=hustWHU6";
-			// url =
-			// "jdbc:mysql://localhost/hhmhywzr?user=hhmhywzr&password=hustWHU6";
-			// url =
-			// "jdbc:mysql://localhost/hhmhywzr?user=root&password=hustWHU6";
-			// url =
-			// "jdbc:mysql://61.152.105.38/hhmhywzr?user=hhmhywzr&password=hustWHU6";
+			url = "";
 			this.conn = DriverManager.getConnection(url);
 		} catch (Exception e) {
 			e.printStackTrace();
