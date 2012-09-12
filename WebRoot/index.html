@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Bootstrap, from Twitter</title>
+		<title></title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="author" content="">
@@ -48,10 +48,12 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span> </a>
 					<a class="brand" href="#">Eazow's Space</a>
 					<div class="nav-collapse collapse">
+						<!--
 						<p class="navbar-text pull-right">
 							Logged in as
 							<a href="#" class="navbar-link">Username</a>
 						</p>
+						-->
 						<ul class="nav">
 							<li class="active">
 								<a href="#">Home</a>
@@ -70,12 +72,30 @@ body {
 		</div>
 		
 		<div class="container-fluid">
+		<!-- 
+			<div class="row-fluid">
+				<div class="span12">
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">首页</a> <span class="divider">/</span>
+						</li>
+						<li>
+							<a href="#">库</a> <span class="divider">/</span>
+						</li>
+						<li class="active">数据</li>
+					</ul>
+				</div>
+			</div>
+		-->		
 			<div class="row-fluid">
 				<div class="span3">
 					<div class="well sidebar-nav">
 						<ul class="nav nav-list">
 							<li class="nav-header">
-								分类
+								<h5>
+									<i class="icon-book"></i> 
+									分类
+								</h5>
 							</li>
 							<li class="active">
 								<a href="#">分类1</a>
@@ -138,8 +158,10 @@ body {
 				                </div>
 			              	</div>
 			            </div>
+			            <!-- 
 			            <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 			            <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			            -->
 		          	</div>
 				
 				<!-- 
@@ -168,9 +190,9 @@ body {
 				 -->
 					<div class="row-fluid">
 						<div class="span12">
-							<h2>
+							<h1>
 								Heading
-							</h2>
+							</h1>
 							<p>
 								Donec id elit non mi porta gravida at eget metus. Fusce dapibus,
 								tellus ac cursus commodo, tortor mauris condimentum nibh, ut
@@ -191,6 +213,7 @@ body {
 						</div>
 						<!--/span-->
 					</div>
+					<hr/>
 					<div class="row-fluid">
 						<div class="span12">
 							<h2>
@@ -209,6 +232,19 @@ body {
 						<!--/span-->
 					</div>
 					<!--/row-->
+					
+					<div class="pagination">
+						<ul>
+						<li><a href="#">前一页</a></li>
+						<li class="active">
+						 <a href="#">1</a>
+						</li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">下一页</a></li>
+						</ul>
+					</div>
 				</div>
 				<!--/span-->
 			</div>
@@ -218,7 +254,8 @@ body {
 
 			<footer>
 				<p>
-					&copy; Eazow 2010-2012 <a href="http://www.miitbeian.gov.cn">鄂ICP备10202535号</a> 
+					&copy; Eazow 2010-2012
+					<a href="http://www.miitbeian.gov.cn">鄂ICP备10202535号</a>
 				</p>
 			</footer>
 
