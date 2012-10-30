@@ -64,8 +64,8 @@
 					<%
 						Category category = article.getCategory();
 					%>
-					<div style="text-align: right; border-bottom-style: dashed; border-bottom-width: 1px; 
-						border-bottom-color: #999; padding-bottom: 10px">
+					<div style="text-align: right; border-bottom-style: solid; border-bottom-width: 1px;; 
+						border-bottom-color: #eee; padding-bottom: 10px">
 						标签:
 						<%
 							List<Tag> tags = article.getTags();
