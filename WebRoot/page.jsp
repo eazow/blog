@@ -7,7 +7,7 @@
 	{
 %>
 		<div class="pageDiv">
-			<form action="getIndexArticlesServlet" id="pageForm" method="post">
+			<form action="index" id="pageForm" method="post">
 				<input type="hidden" name="pageNum" id="pageNum"></input>
 			</form>
 <%
