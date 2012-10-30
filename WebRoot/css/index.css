@@ -71,6 +71,7 @@ h1,h2,h3 {
 	height: 56px;
 /*	background: #004356;*/
 	background-image: url(../img/header.jpg);
+/*	background: #1b1b1b; */
 }
 .header_content {
 	width: 900px;
